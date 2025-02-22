@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend&family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+*{
+    font-family: "Outfit", serif;
+}
+.active hr {
+    display: block;
+/*? @apply block;      //  @apply is used to apply the tailwindcss classes in the css.  */
+}
+
+
+::-webkit-scrollbar{
+    @apply hidden
+}
