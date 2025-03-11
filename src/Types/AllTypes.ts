@@ -4,7 +4,7 @@ export interface Address {
     line1: string;
     line2: string;
 }
-export interface Doctor {
+export interface IDoctor {
     _id: string;
     name: string;
     image: string; // Assuming this is an imported image path
@@ -15,7 +15,7 @@ export interface Doctor {
     fees: number;
     address: Address;
 }
-export type DoctorsList = Doctor[];
+export type DoctorsList = IDoctor[];
   
 
 

@@ -28,7 +28,7 @@ function Navbar() {
         </NavLink>
       </ul>
 
-      <div>
+      <div className=" flex items-center gap-5">
         {token ? (
           <div  className="flex items-center gap-2 group cursor-pointer relative">
             <img className="rounded-full w-10" src={assets.profile_pic} alt="" />
@@ -49,6 +49,32 @@ function Navbar() {
             Create account
           </button>
         )}
+
+        <img onClick={()=> setShowMenu(true)} className="w-6 md:hidden" src={assets.menu_icon} alt="" />
+        {/* Mobile Menu */}
+        {showMenu && (
+          <div className={`${showMenu? 'absolute w-full h-screen': 'h-0 w-0'} right-0 top-0 bg-white rounded-md shadow-lg z-50`}>
+            <div className="flex flex-col gap-4 px-6 py-4">
+              <img className="w-8 self-end" src={assets.logo} alt="" />
+              <img onClick={()=> setShowMenu(false)} className="w-6 self-end" src={assets.cross_icon} alt="" />
+         
+            </div> 
+            <ul className="flex flex-col items-center w-full gap-4 p-4">
+              <NavLink className="bg-blue-400 hover:bg-blue-200 w-full text-center py-4" to="/">
+                <li  onClick={()=> setShowMenu(false)} >HOME</li>
+              </NavLink>
+              <NavLink to="/doctors" className={'bg-blue-400 hover:bg-blue-200 w-full text-center py-4'}>
+                <li onClick={()=> setShowMenu(false)}  className="py-1">ALL DOCTORS</li>
+              </NavLink>
+              <NavLink to="/about" className={'bg-blue-400 hover:bg-blue-200 w-full text-center py-4'}>
+                <li onClick={()=> setShowMenu(false)}  className="py-1">ABOUT</li>
+              </NavLink>
+              <NavLink to="/contact" className={'bg-blue-400 hover:bg-blue-200 w-full text-center py-4'}>
+                <li onClick={()=> setShowMenu(false)}  className="py-1">CONTACT</li>
+              </NavLink>
+              </ul>
+          </div>)
+  }
       </div>
     </div>
   );
