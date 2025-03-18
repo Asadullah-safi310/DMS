@@ -3,11 +3,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { DoctorsList } from "../Types/AllTypes";
 
+//icons
+import { CiSearch } from "react-icons/ci";
+
 function Doctors() {
   const { speciality } = useParams();
   const navigate = useNavigate();
   const doctors = useContext(AppContext);
   const [filterDoctors, setFilterDoctors] = useState<DoctorsList>();
+  const [searchValue, setSearchValue] = useState("");
 
   const applyFilter = () => {
     if (speciality) {
@@ -15,21 +19,33 @@ function Doctors() {
         (doctor) => doctor.speciality === speciality
       );
       setFilterDoctors(filterData);
-    } else {
-
+    } else if (searchValue) {
+      const filterData = doctors.filter((doctor) => doctor.name.includes(searchValue)); 
+      setFilterDoctors(filterData);
+    }else{
       setFilterDoctors(doctors);
     }
   };
 
   useEffect(() => {
     applyFilter();
-  }, [speciality, doctors]);
+  }, [speciality, doctors, searchValue]);
 
   return (
     <div>
-      <p className="text-center text-2xl text-gray-600 font-medium">
-        Browse through the doctors specialist.
-      </p>
+      <div className="grid grid-cols-3">
+        <div className="flex items-center col-start-2">
+          <p className="text-center text-2xl text-gray-600 font-medium">
+            Browse through the doctors specialist.
+          </p>
+        </div>
+
+        <div className="flex border border-gray-300 rounded-2xl gap-2 p-2">
+          <CiSearch className="w-[40px]  h-[40px] text-gray-500"/>
+          <input type="text" onChange={(e)=> setSearchValue(e.target.value)} placeholder="Search Doctor by Name" className="w-6 sm:w-full text-xl outline-none p-1 justify-self-end" />
+        </div>
+      </div>
+  
       <div className="flex flex-col sm:flex-row items-start mt-5 gap-5 pt-5">
         <div className="flex-col flex gap-4 text-sm text-gray-600">
           <button

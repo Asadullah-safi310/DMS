@@ -16,7 +16,7 @@ function TopDoctors() {
         {
           doctors?.map((items, index) => (
             <div 
-              className='border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:scale-95 transition-all duration-300'
+              className='border-blue-200 bg[var(--primary-color] rounded-xl overflow-hidden cursor-pointer hover:scale-95 transition-all duration-300'
               key={index}
               onClick={() => {navigate(`/appointment/${items._id}`),scrollTo(0,0)}}
               >

@@ -4,6 +4,8 @@ import { AppContext } from "../context/AppContext";
 import { IDoctor } from "../Types/AllTypes";
 import { assets } from "../assets/assets";
 import RelatedDoctors from "../components/RelatedDoctors";
+import PatientForm from "./PatientForm";
+import DoctorsPatients from "../components/DoctorsPatients";
 
 interface ItimeSlot {
   datetime: Date;
@@ -21,6 +23,7 @@ const Appointments: React.FC = () => {
   const [docSlots, setDocSlots] = useState<ItimeSlots[]>([]);
   const [slotIndex, setSlotIndex] = useState<number>(0);
   const [slottime, setSlotTime] = useState<string>("");
+  const [isPatient, setIsPatient] = useState<boolean>(false);
 
   const fetchDocInfo = async () => {
     const docInfo = doctors.find((doc) => doc._id === docID);
@@ -96,7 +99,7 @@ const Appointments: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="">
             <img
-              className="bg-blue-500 rounded-lg"
+              className="bg-[var(--primary-color)] rounded-lg"
               src={docInfo?.image}
               alt=""
             />
@@ -148,7 +151,7 @@ const Appointments: React.FC = () => {
                   key={index}
                   className={`border text-center py-6 min-w-16 rounded-full cursor-pointer ${
                     slotIndex === index
-                      ? "bg-blue-400 text-white"
+                      ? "bg-[var(--secondary-color)] text-white"
                       : "bg-white border-gray-400"
                   }`}
                   onClick={() => setSlotIndex(index)}
@@ -170,7 +173,7 @@ const Appointments: React.FC = () => {
                     onClick={() => setSlotTime(time[1])}
                     className={`border text-sm font-light flex-shrink-0  whitespace-nowrap rounded-xl py-2 px-5 cursor-pointer ${
                       slottime === time[1]
-                        ? "bg-blue-400 text-white"
+                        ? "bg-[var(--secondary-color)] text-white"
                         : "bg-white border-gray-400"
                     } `}
                   >
@@ -180,15 +183,26 @@ const Appointments: React.FC = () => {
               })}
           </div>
 
-          <button className="bg-blue-400 text-white text-sm font-light px-14 py-3 rounded-full mt-4">
+          <button 
+            className="bg-[var(--secondary-color)] text-white text-sm font-light px-14 py-3 rounded-full mt-4"
+            onClick={()=> setIsPatient(true)}
+            >
             {" "}
             Book an appointment
           </button>
         </div>
       )}
 
+      {/* Patients List with profile  */}
+      <DoctorsPatients profilePic="" name="" orderID={0}/>
+
+
       {/* Related Doctors section */}
       <RelatedDoctors docInfo={docInfo} />
+
+      {
+        isPatient && <PatientForm setIsPatient={setIsPatient}/>
+      }
     </div>
   );
 };

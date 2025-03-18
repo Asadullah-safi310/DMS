@@ -9,13 +9,14 @@ import MyProfile from '../pages/MyProfile';
 import Myappointments from '../pages/Appointments';
 import Appointments from '../pages/Appointments';
 
+
 const AppRouter = createBrowserRouter([
   {
     path: '/',
     element: <App/>,  
     children: [
       {
-        path: '/',
+        path: '/',  //if children doesn't exist <Home/> will be go and replace with outlet
         element: <Home/>,
       },
       {
@@ -49,7 +50,8 @@ const AppRouter = createBrowserRouter([
       {
         path: '/appointment/:docID',
         element: <Appointments/>,
-      }
+      },
+
     ]
   },
 ]);

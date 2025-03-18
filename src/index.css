@@ -13,3 +13,14 @@
 ::-webkit-scrollbar{
     @apply hidden
 }
+
+:root {
+    /* --primary-color: #00628B;
+    --secondary-color: #81A594;
+    --tertiary-color: #E6E6DC; */
+
+    --secondary-color: #00628B;
+    --primary-color: #81A594;
+    --tertiary-color: #E6E6DC;
+    --fourth-color: #acd1c0;
+}

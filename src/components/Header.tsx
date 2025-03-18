@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 
 function Header() {
   return (
-    <div className=' flex flex-col md:flex-row flex-wrap h-screen bg-[#5f6FFF]  px-6 md:px-10 lg:px-20'>
+    <div className='flex flex-col md:flex-row flex-wrap h-screen bg-[var(--primary-color)]  px-6 md:px-10 lg:px-20'>
 
         {/* Left Side  */}
         <div className=' md:w-1/2 flex flex-col items-center justify-center py-10 m-auto md:py-[10vw] md:mb-[30px] gap-4 '>
@@ -16,13 +16,13 @@ function Header() {
                     schedule your appointment hassle-free.
                 </p>
             </div>
-            <a className='flex items-center gap-2 bg-white px-8 py-3 rounded-full text-gray-600 text-sm m-auto md:m-0 hover:scale-105 transition-all  duration-300 ' href="#speciality">Book Appointment <img className='w-3' src={assets.arrow_icon} alt="" /></a>
+            <a className='flex items-center gap-2 text-white bg-[var(--secondary-color)] px-8 py-3 rounded-full text-sm m-auto md:m-0 hover:scale-105 transition-all  duration-300 ' href="#speciality">Book Appointment <img className='w-3 mask mask-image color-white' src={assets.arrow_icon} alt="" /></a>
 
         </div>
-         
+          
         {/* Right Side  */}
-        <div className=' md:w-1/2 relative'>
-            <img className='w-full md:absolute  h-auto rounded-lg' src={assets.header_img} alt="" />
+        <div className=' md:w-1/2 relative hidden md:block'>
+            <img className='w-full md:absolutez-10 h-auto rounded-lg' src={assets.header_img} alt="" />
         </div>
     </div>
   )
